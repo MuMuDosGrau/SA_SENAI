@@ -1,0 +1,84 @@
+/* Container principal */
+.funcionarios-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(to right, #f0f0f0, #d9d9d9);
+  }
+  
+  /* Título */
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  /* Lista de funcionários */
+  .lista-funcionarios {
+    width: 60%;
+    margin-bottom: 2rem;
+  }
+  
+  .funcionario-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    padding: 0.5rem 1rem;
+    background-color: #f2f2f2;
+    border-radius: 5px;
+  }
+  
+  /* Botões de editar e remover */
+  .editar,
+  .remover {
+    margin-left: 1rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .editar {
+    background-color: #333;
+    color: white;
+  }
+  
+  .remover {
+    background-color: #e63946;
+    color: white;
+  }
+  
+  /* Cadastro de novos funcionários */
+  .cadastro {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
+  
+  .cadastro input {
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width: 200px;
+  }
+  
+  .cadastrar {
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .cadastrar:hover {
+    background-color: #218838;
+  }
+  

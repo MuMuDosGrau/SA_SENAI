@@ -1,0 +1,49 @@
+/* Centralizar a página */
+.home-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(to right, #f0f0f0, #d9d9d9); /* Fundo gradiente */
+  }
+  
+  /* Estilo do título */
+  h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: #333;
+  }
+  
+  /* Agrupamento dos botões */
+  .button-group {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem; /* Espaçamento entre os botões */
+  }
+  
+  /* Estilo dos botões */
+  .home-button {
+    padding: 1rem 2rem;
+    font-size: 1rem;
+    color: #000;
+    background-color: #f2f2f2;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+  }
+  
+  /* Efeito ao passar o mouse */
+  .home-button:hover {
+    background-color: #e0e0e0;
+    transform: scale(1.05); /* Aumenta o botão */
+  }
+  
+  /* Efeito ao clicar */
+  .home-button:active {
+    transform: scale(1);
+    background-color: #d0d0d0;
+  }
+  

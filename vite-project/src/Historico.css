@@ -1,0 +1,70 @@
+.historico-container {
+ 
+  text-align: center;
+  background: linear-gradient(to right, #f0f0f0, #d9d9d9);
+  padding-top: 50px; /* Espaço para o campo de pesquisa fixo */
+  height: 100;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center; /* Centraliza o conteúdo */
+}
+
+.historico-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background-color: #fff;
+  padding: 1rem;
+  width: 100%; /* Para garantir que ocupe a largura total */
+  border-bottom: 2px solid #ddd;
+}
+
+.search-input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+.historico-table-container {
+  max-height: 60vh; /* Controla o tamanho máximo da área da tabela */
+  overflow-y: auto; /* Ativa rolagem vertical */
+  width: 80%; /* Define a largura da tabela */
+  margin-top: 1rem;
+}
+
+table {
+  width: 100%; /* A tabela vai ocupar 100% da largura do contêiner */
+  border-collapse: collapse;
+}
+
+table, th, td {
+  border: 1px solid #ccc;
+}
+
+th, td {
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+}
+
+.pagination button {
+  padding: 0.5rem;
+  margin: 0 0.5rem;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.pagination button:disabled {
+  background-color: #ccc;
+}
