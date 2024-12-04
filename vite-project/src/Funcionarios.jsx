@@ -93,8 +93,10 @@ const Funcionarios = () => {
             ) : (
               <div>
                 <span>{funcionario.nome}</span>
+                <div>
                 <button className="editar" onClick={() => iniciarEdicao(funcionario)}>Editar</button>
                 <button className="remover" onClick={() => removerFuncionario(funcionario.id)}>Remover</button>
+                </div>
               </div>
             )}
           </div>
@@ -108,7 +110,7 @@ const Funcionarios = () => {
           value={novoFuncionario}
           onChange={(e) => setNovoFuncionario(e.target.value)}
         />
-        <button onClick={adicionarFuncionario}>CADASTRAR</button>
+        <button className="btn-cadastrar" onClick={adicionarFuncionario}>CADASTRAR</button>
       </div>
     </div>
   );

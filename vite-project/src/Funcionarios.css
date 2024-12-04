@@ -81,4 +81,18 @@
   .cadastrar:hover {
     background-color: #218838;
   }
+
+  .btn-cadastrar{
+    background-color: #28a745;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.9rem;
+  }
+  
+  .btn-cadastrar:hover{
+    background-color: #218838;
+  }
   

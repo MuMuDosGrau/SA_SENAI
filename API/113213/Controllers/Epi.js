@@ -22,27 +22,29 @@ export const listarEPI = async (req, res) => {
 
 export const alterarEPI = async (req, res) => {
   try {
-    const { id } = req.params; // Obtém o ID do EPI pela URL
-    const { descricao } = req.body; // Nova descrição do EPI
+    const { id } = req.params;
+    const { descricao } = req.body;
 
-    // Atualiza o EPI no banco de dados
     const [linhasAtualizadas] = await EPI.update({ descricao }, { where: { id } });
 
     if (linhasAtualizadas === 0) {
       return res.status(404).json({ error: 'EPI não encontrado' });
     }
 
-    const epiAtualizado = await EPI.findByPk(id); // Recupera o EPI atualizado
+    const epiAtualizado = await EPI.findByPk(id);
     res.status(200).json(epiAtualizado);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao alterar EPI' });
   }
 };
 
-
 export const removerEPI = async (req, res) => {
   try {
-    const { id } = req.params; // Obtém o ID da URL
+    const { id } = req.params;
+
+    // Remove dependências na tabela Historico
+    await Historico.destroy({ where: { epiId: id } });
+
     const deletado = await EPI.destroy({ where: { id } });
 
     if (!deletado) {
@@ -75,17 +77,16 @@ export const listarFuncionario = async (req, res) => {
 
 export const alterarFuncionario = async (req, res) => {
   try {
-    const { id } = req.params; // Obtém o ID do funcionário pela URL
-    const { nome } = req.body; // Novo nome do funcionário
+    const { id } = req.params;
+    const { nome } = req.body;
 
-    // Atualiza o funcionário no banco de dados
     const [linhasAtualizadas] = await Funcionario.update({ nome }, { where: { id } });
 
     if (linhasAtualizadas === 0) {
       return res.status(404).json({ error: 'Funcionário não encontrado' });
     }
 
-    const funcionarioAtualizado = await Funcionario.findByPk(id); // Recupera o funcionário atualizado
+    const funcionarioAtualizado = await Funcionario.findByPk(id);
     res.status(200).json(funcionarioAtualizado);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao alterar funcionário' });
@@ -94,7 +95,10 @@ export const alterarFuncionario = async (req, res) => {
 
 export const removerFuncionario = async (req, res) => {
   try {
-    const { id } = req.params; // Obtém o ID do funcionário dos parâmetros da URL
+    const { id } = req.params;
+
+    // Remove dependências na tabela Historico
+    await Historico.destroy({ where: { funcionarioId: id } });
 
     const deletado = await Funcionario.destroy({ where: { id } });
 
@@ -110,7 +114,7 @@ export const removerFuncionario = async (req, res) => {
 
 export const registrarRetirada = async (req, res) => {
   try {
-    const { funcionarioNome, epiDescricao, data } = req.body; // Aqui estamos pegando a data enviada
+    const { funcionarioNome, epiDescricao, data } = req.body;
 
     const funcionario = await Funcionario.findOne({ where: { nome: funcionarioNome } });
     const epi = await EPI.findOne({ where: { descricao: epiDescricao } });
@@ -119,19 +123,17 @@ export const registrarRetirada = async (req, res) => {
       return res.status(400).json({ error: 'Funcionário ou EPI não encontrado' });
     }
 
-    // Agora, use a data enviada pelo cliente
     const registro = await Historico.create({
       funcionarioId: funcionario.id,
       epiId: epi.id,
       tipo: 'Retirada',
-      data: new Date(data), // Usando a data recebida do cliente
+      data, // Usar a string recebida diretamente
     });
     res.status(201).json(registro);
   } catch (error) {
     res.status(500).json({ error: 'Erro ao registrar retirada' });
   }
 };
-
 
 export const registrarDevolucao = async (req, res) => {
   try {
@@ -144,22 +146,18 @@ export const registrarDevolucao = async (req, res) => {
       return res.status(400).json({ error: 'Funcionário ou EPI não encontrado' });
     }
 
-    // Aqui a data já está sem horário, então podemos usá-la diretamente
-    const dataDevolucao = new Date(data); // Isso cria uma data sem fuso horário específico, no servidor
-
     await Historico.create({
       funcionarioId: funcionario.id,
       epiId: epi.id,
       tipo: 'Devolução',
-      data: dataDevolucao, // Usando a data ajustada
+      data: new Date(data),
     });
-    
+
     res.status(201).json({ message: 'Devolução registrada com sucesso' });
   } catch (error) {
     res.status(500).json({ error: 'Erro ao registrar devolução' });
   }
 };
-
 
 export const mostrarRetiradas = async (req, res) => {
   try {
@@ -167,8 +165,8 @@ export const mostrarRetiradas = async (req, res) => {
       where: { tipo: 'Retirada' },
       include: [
         { model: Funcionario, attributes: ['nome'] },
-        { model: EPI, attributes: ['descricao'] }
-      ]
+        { model: EPI, attributes: ['descricao'] },
+      ],
     });
     res.status(200).json(retiradas);
   } catch (error) {
@@ -182,8 +180,8 @@ export const mostrarDevolucoes = async (req, res) => {
       where: { tipo: 'Devolução' },
       include: [
         { model: Funcionario, attributes: ['nome'] },
-        { model: EPI, attributes: ['descricao'] }
-      ]
+        { model: EPI, attributes: ['descricao'] },
+      ],
     });
     res.status(200).json(devolucoes);
   } catch (error) {
@@ -209,8 +207,8 @@ export const exibirHistorico = async (req, res) => {
       where: filtros,
       include: [
         { model: Funcionario, attributes: ['nome'] },
-        { model: EPI, attributes: ['descricao'] }
-      ]
+        { model: EPI, attributes: ['descricao'] },
+      ],
     });
 
     res.status(200).json(historico);

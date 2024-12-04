@@ -93,8 +93,10 @@ const Epis = () => {
             ) : (
               <div>
                 <span>{epi.descricao}</span>
+                <div>
                 <button className="editar" onClick={() => iniciarEdicao(epi)}>Editar</button>
                 <button className="remover" onClick={() => removerEpi(epi.id)}>Remover</button>
+                </div>
               </div>
             )}
           </div>

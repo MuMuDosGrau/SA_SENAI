@@ -17,15 +17,14 @@ const CadastroRetirada = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (form.funcionario && form.epi && form.data) { // Certifique-se de que a data foi preenchida
+    if (form.funcionario && form.epi && form.data) {
       try {
-        // Enviando dados para o back-end
         const response = await axios.post(
           `http://localhost:3000/${form.tipo === 'Retirada' ? 'registrarRetirada' : 'registrarDevolucao'}`,
           {
             funcionarioNome: form.funcionario,
             epiDescricao: form.epi,
-            data: form.data, // A data escolhida no formulário
+            data: form.data, // Enviar diretamente no formato "YYYY-MM-DD"
           }
         );
   
