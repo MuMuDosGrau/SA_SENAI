@@ -1,3 +1,9 @@
+*{
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
 /* Container principal */
 .epis-container {
     display: flex;
@@ -52,6 +58,10 @@
     background-color: #e63946;
     color: white;
   }
+
+  .remover:hover {
+    background-color: #b31a27;
+  }
   
   /* Cadastro de novos EPIs */
   .cadastro {
@@ -76,6 +86,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
+    margin-top: 0;
   }
   
   .cadastrar:hover {

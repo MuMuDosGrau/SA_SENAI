@@ -53,8 +53,7 @@ const Historico = () => {
     <div className="historico-container">
       <h1>Histórico de Retiradas e Devoluções</h1>
 
-      {/* Campo de busca unificado */}
-      <div className="busca-container">
+      <div className="search-input">
         <input
           type="text"
           placeholder="Buscar Funcionário ou EPI"

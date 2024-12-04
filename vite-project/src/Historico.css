@@ -1,13 +1,18 @@
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
 .historico-container {
- 
   text-align: center;
   background: linear-gradient(to right, #f0f0f0, #d9d9d9);
   padding-top: 50px; /* Espaço para o campo de pesquisa fixo */
-  height: 100;
+  min-height: 100vh; /* Garante que o container ocupe toda a altura da tela */
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: center; /* Centraliza o conteúdo */
+  align-items: center;
 }
 
 .historico-header {
@@ -16,28 +21,27 @@
   z-index: 10;
   background-color: #fff;
   padding: 1rem;
-  width: 100%; /* Para garantir que ocupe a largura total */
+  width: 100%;
   border-bottom: 2px solid #ddd;
 }
 
 .search-input {
   padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 5px;
   width: 250px;
   margin-bottom: 1rem;
 }
 
 .historico-table-container {
-  max-height: 60vh; /* Controla o tamanho máximo da área da tabela */
-  overflow-y: auto; /* Ativa rolagem vertical */
-  width: 80%; /* Define a largura da tabela */
+  max-height: 60vh;
+  overflow-y: auto;
+  width: 80%;
   margin-top: 1rem;
 }
 
 table {
-  width: 100%; /* A tabela vai ocupar 100% da largura do contêiner */
+  width: 100%;
   border-collapse: collapse;
+  table-layout: fixed;
 }
 
 table, th, td {
@@ -67,4 +71,27 @@ th, td {
 
 .pagination button:disabled {
   background-color: #ccc;
+}
+
+tr:hover{
+  background-color: #c0c0c0;
+}
+
+@media (max-width: 768px) {
+  .historico-container {
+    padding-top: 20px;
+  }
+
+  .search-input {
+    width: 200px;
+  }
+
+  .historico-table-container {
+    width: 95%;
+  }
+
+  .pagination button {
+    padding: 0.3rem;
+    font-size: 0.8rem;
+  }
 }

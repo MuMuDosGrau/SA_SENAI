@@ -52,6 +52,10 @@
     background-color: #e63946;
     color: white;
   }
+
+  .remover:hover {
+    background-color: #b31a27;
+  }
   
   /* Cadastro de novos funcionários */
   .cadastro {
@@ -90,6 +94,7 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 0.9rem;
+    margin-top: 0;
   }
   
   .btn-cadastrar:hover{

@@ -102,7 +102,6 @@ const Epis = () => {
           </div>
         ))}
       </div>
-
       <div className="cadastro">
         <input
           type="text"
@@ -110,7 +109,7 @@ const Epis = () => {
           value={novoEpi}
           onChange={(e) => setNovoEpi(e.target.value)}
         />
-        <button onClick={adicionarEpi}>CADASTRAR</button>
+        <button className='cadastrar' onClick={adicionarEpi}>CADASTRAR</button>
       </div>
     </div>
   );
