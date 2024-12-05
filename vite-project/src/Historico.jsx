@@ -79,7 +79,7 @@ const Historico = () => {
               <tr key={index}>
                 <td>{registro.Funcionario?.nome || 'N/A'}</td>
                 <td>{registro.EPI?.descricao || 'N/A'}</td>
-                <td>{new Date(registro.data).toLocaleDateString('pt-BR')}</td>
+                <td>{new Date(registro.data+"T00:00").toLocaleDateString('pt-BR')}</td>
                 <td>{registro.tipo}</td>
               </tr>
             ))}

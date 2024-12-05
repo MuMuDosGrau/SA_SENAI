@@ -9,15 +9,15 @@ const Home = () => {
       <h1>Saúde e Segurança do Trabalho</h1>
       <div className="button-group">
 
-        <button className="home-button" onClick={() => navigate('/epis')}>
+        <button id='epis' className="home-button" onClick={() => navigate('/epis')}>
           EPIs
         </button>
 
-        <button className="home-button" onClick={() => navigate('/funcionarios')}>
+        <button id='funcionario' className="home-button" onClick={() => navigate('/funcionarios')}>
           Funcionários
         </button>
 
-        <button className="home-button" onClick={() => navigate('/retiradas')}>
+        <button id='retirada' className="home-button" onClick={() => navigate('/retiradas')}>
           Registro
         </button>
 

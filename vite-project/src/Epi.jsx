@@ -83,19 +83,20 @@ const Epis = () => {
             {editandoEpi === epi.id ? (
               <div>
                 <input
+                id='nome-editado'
                   type="text"
                   value={descricaoEditada}
                   onChange={(e) => setDescricaoEditada(e.target.value)}
                 />
-                <button className="editar" onClick={() => salvarEdicao(epi.id)}>Salvar</button>
+                <button id='salvar' className="editar" onClick={() => salvarEdicao(epi.id)}>Salvar</button>
                 <button className="remover" onClick={cancelarEdicao}>Cancelar</button>
               </div>
             ) : (
               <div>
                 <span>{epi.descricao}</span>
                 <div>
-                <button className="editar" onClick={() => iniciarEdicao(epi)}>Editar</button>
-                <button className="remover" onClick={() => removerEpi(epi.id)}>Remover</button>
+                  <button id='editar' className="editar" onClick={() => iniciarEdicao(epi)}>Editar</button>
+                  <button id='remover' className="remover" onClick={() => removerEpi(epi.id)}>Remover</button>
                 </div>
               </div>
             )}
@@ -104,12 +105,13 @@ const Epis = () => {
       </div>
       <div className="cadastro">
         <input
+          id='input-cadastrar'
           type="text"
           placeholder="Digite o nome do EPI"
           value={novoEpi}
           onChange={(e) => setNovoEpi(e.target.value)}
         />
-        <button className='cadastrar' onClick={adicionarEpi}>CADASTRAR</button>
+        <button id='cadastrar' className='cadastrar' onClick={adicionarEpi}>CADASTRAR</button>
       </div>
     </div>
   );

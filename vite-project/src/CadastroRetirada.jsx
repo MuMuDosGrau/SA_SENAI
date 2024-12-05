@@ -48,6 +48,7 @@ const CadastroRetirada = () => {
         <label>
           Funcionário:
           <input
+          id='funcionario'
             type="text"
             value={form.funcionario}
             onChange={(e) => setForm({ ...form, funcionario: e.target.value })}
@@ -57,6 +58,7 @@ const CadastroRetirada = () => {
         <label>
           EPI:
           <input
+          id='epi'
             type="text"
             value={form.epi}
             onChange={(e) => setForm({ ...form, epi: e.target.value })}
@@ -66,6 +68,7 @@ const CadastroRetirada = () => {
         <label>
           Data:
           <input
+          id='data'
             type="date"
             value={form.data}
             onChange={(e) => setForm({ ...form, data: e.target.value })}
@@ -74,6 +77,7 @@ const CadastroRetirada = () => {
         <label>
           Tipo:
           <select
+          id='select-tipo'
             value={form.tipo}
             onChange={(e) => setForm({ ...form, tipo: e.target.value })}
           >
@@ -81,7 +85,7 @@ const CadastroRetirada = () => {
             <option value="Devolução">Devolução</option>
           </select>
         </label>
-        <button type="submit">Cadastrar</button>
+        <button id='cadastrar' type="submit">Cadastrar</button>
       </form>
     </div>
   );

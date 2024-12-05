@@ -40,13 +40,13 @@ const Funcionarios = () => {
 
   // Função para remover funcionário do banco de dados
   const removerFuncionario = async (id) => {
-  try {
-    await axios.delete(`${baseURL}/${id}`);
-    setFuncionarios((prevFuncionarios) => prevFuncionarios.filter((func) => func.id !== id));
-  } catch (error) {
-    console.error('Erro ao remover funcionário:', error);
-  }
-};
+    try {
+      await axios.delete(`${baseURL}/${id}`);
+      setFuncionarios((prevFuncionarios) => prevFuncionarios.filter((func) => func.id !== id));
+    } catch (error) {
+      console.error('Erro ao remover funcionário:', error);
+    }
+  };
 
   // Função para iniciar o modo de edição
   const iniciarEdicao = (funcionario) => {
@@ -83,19 +83,20 @@ const Funcionarios = () => {
             {editandoFuncionario === funcionario.id ? (
               <div>
                 <input
+                  id='nome-editado'
                   type="text"
                   value={nomeEditado}
                   onChange={(e) => setNomeEditado(e.target.value)}
                 />
-                <button className="editar" onClick={() => salvarEdicao(funcionario.id)}>Salvar</button>
-                <button className="remover" onClick={cancelarEdicao}>Cancelar</button>
+                <button id='salvar' className="editar" onClick={() => salvarEdicao(funcionario.id)}>Salvar</button>
+                <button  className="remover" onClick={cancelarEdicao}>Cancelar</button>
               </div>
             ) : (
               <div>
                 <span>{funcionario.nome}</span>
                 <div>
-                <button className="editar" onClick={() => iniciarEdicao(funcionario)}>Editar</button>
-                <button className="remover" onClick={() => removerFuncionario(funcionario.id)}>Remover</button>
+                  <button id='editar' className="editar" onClick={() => iniciarEdicao(funcionario)}>Editar</button>
+                  <button id='remover' className="remover" onClick={() => removerFuncionario(funcionario.id)}>Remover</button>
                 </div>
               </div>
             )}
@@ -105,12 +106,13 @@ const Funcionarios = () => {
 
       <div className="cadastro">
         <input
+          id='input-cadastrar'
           type="text"
           placeholder="Digite o nome do funcionário"
           value={novoFuncionario}
           onChange={(e) => setNovoFuncionario(e.target.value)}
         />
-        <button className="btn-cadastrar" onClick={adicionarFuncionario}>CADASTRAR</button>
+        <button id='cadastrar' className="btn-cadastrar" onClick={adicionarFuncionario}>CADASTRAR</button>
       </div>
     </div>
   );
